@@ -1,0 +1,252 @@
+:root {
+  font-family: var(--custom-font);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: var(--cyan-gray-light);
+  --custom-font: "Space Mono", sans-serif;
+
+  --primary-color: hsl(172, 67%, 45%);
+  --secondary-color: var(--cyan-very-dark);
+  --hover-color: hsl(173, 62%, 76%);
+  --error-color: hsl(0, 49%, 55%);
+
+  --cyan-very-dark: hsl(183, 100%, 15%);
+  --cyan-gray-dark: hsl(186, 14%, 43%);
+  --cyan-gray: hsl(184, 14%, 56%);
+  --cyan-gray-light: hsl(185, 41%, 84%);
+  --cyan-gray-very-light: hsl(189, 41%, 97%);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--cyan-gray-light);
+}
+
+header {
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;;
+}
+
+#app {
+  margin: 0 auto;
+  width: 100%;
+}
+
+main {
+  width: 100%;
+  max-width: 920px;
+  margin: 0 auto;
+  background: white;
+  padding: 30px;
+  box-sizing: border-box;
+  border-radius: 30px;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+/* Form styles */
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 30px;
+}
+
+legend {
+  margin-bottom: 15px;
+  color: var(--cyan-gray-dark);
+}
+
+label {
+  height: 0;
+  overflow: hidden;
+  display: block;
+}
+
+input {
+  background: var(--cyan-gray-very-light);
+  border: none;
+  height: 48px;
+  padding: 15px;
+  font-size: 24px;
+  font-weight: 700;
+  display: block;
+  width: 100%;
+  color: var(--cyan-very-dark);
+  font-family: var(--custom-font);
+  box-sizing: border-box;
+  text-align: right;
+  border-radius: 5px;
+}
+
+input:focus {
+  outline: 2px solid var(--primary-color);
+  border: none;
+}
+
+.input-field.error input {
+  outline: 2px solid var(--error-color);
+}
+
+.input-field.error:before {
+  content: attr(data-error);
+  color: var(--error-color);
+  position: absolute;
+  right: 0;
+  top: -39px;
+}
+
+.input-field {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+.select-group {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.select-group > button {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.select-group > button:hover,
+.select-group > button:focus {
+  background-color: var(--hover-color);
+  color: var(--cyan-very-dark);
+  outline: none;
+}
+
+.select-group > button.active {
+  background-color: var(--primary-color);
+  color: var(--cyan-very-dark);
+}
+
+.select-group > .input-field.error:before {
+  display: none;
+}
+
+button {
+  border-radius: 5px;
+  width: 100%;
+  font-size: 24px;
+  line-height: 24px;
+  padding: 10px;
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  transition: background-color 0.25s;
+}
+
+/* Totals section */
+.card {
+  padding: 30px;
+  background-color: var(--secondary-color);
+  border-radius: 15px;
+}
+
+.reset {
+  text-transform: uppercase;
+  background-color: var(--primary-color);
+  color: var(--cyan-very-dark);
+  font-size: 20px;
+}
+
+.reset[disabled] {
+  opacity: .2;
+}
+
+.reset:hover,
+.reset:focus {
+  background-color: var(--hover-color);
+}
+
+.totals {
+  margin-top: 15px;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.total-label {
+  color: white;
+}
+
+.total-label > span {
+  color: var(--cyan-gray);
+  display: block;
+  font-size: 14px;
+}
+
+.total-amount {
+  font-size: 32px;
+  color: var(--primary-color);
+}
+
+@media (min-width: 768px) {
+  body {
+    padding: 0 30px;
+  }
+  main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 50px;
+  }
+
+  header {
+    margin-bottom: 45px;
+  }
+
+  .select-group {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px;
+  }
+
+  .total-amount {
+    font-size: 48px;
+  }
+
+  .hidden {
+    display: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    background-color: var(--secondary-color);
+  }
+}
